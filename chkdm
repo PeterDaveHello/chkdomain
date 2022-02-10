@@ -1,0 +1,201 @@
+#!/usr/bin/env bash
+
+# chkdm (chkdomain)
+# https://github.com/PeterDaveHello/chkdomain
+# Copyright (C) 2022 ~ Peter Dave Hello
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+# ColorEchoForShell #
+# https://github.com/PeterDaveHello/ColorEchoForShell
+# Copyright (C) 2015 ~ Peter Dave Hello
+function echo.Red() {
+  echo -e "\\033[31m$*\\033[m"
+}
+
+function echo.Green() {
+  echo -e "\\033[32m$*\\033[m"
+}
+
+function echo.Cyan() {
+  echo -e "\\033[36m$*\\033[m"
+}
+# ColorEchoForShell End #
+
+function error() {
+    echo.Red >&2 "$@"
+    exit 1
+}
+
+if [ "$#" -ne "1" ]; then
+    echo.Red "You need to give me just one domain name to run the check!"
+    exit 1
+fi
+
+for cmd in dig nslookup sed head awk; do
+    if ! command -v $cmd > /dev/null 2>&1; then
+        error "command: $cmd not found!"
+    fi
+done
+
+domain="$1"
+
+declare -A nofilterDNS secureDNS adblockDNS
+
+nofilterDNS[AdGuard]="94.140.14.140"
+nofilterDNS[Cloudflare]="1.1.1.1"
+nofilterDNS[Freenom World]="80.80.80.80"
+nofilterDNS[Google]="8.8.8.8"
+nofilterDNS[Hinet]="168.95.1.1"
+nofilterDNS[UltraDNS]="64.6.64.6"
+nofilterDNS[OpenDNS]="208.67.222.2"
+nofilterDNS[Quad101]="101.101.101.101"
+nofilterDNS[Quad9]="9.9.9.10"
+nofilterDNS[Yandex]="77.88.8.1"
+
+secureDNS[CleanBrowsing]="185.228.168.9"
+secureDNS[Cloudflare]="1.1.1.2"
+secureDNS[Comodo]="8.26.56.26"
+secureDNS[CONTROL D]="76.76.2.1"
+secureDNS[UltraDNS]="156.154.70.2"
+secureDNS[SafeDNS]="195.46.39.39"
+secureDNS[OpenDNS]="208.67.222.222"
+secureDNS[Quad9]="9.9.9.9"
+secureDNS[Yandex]="77.88.8.2"
+
+adblockDNS[AdGuard]="94.140.14.14"
+adblockDNS[AhaDNS]="5.2.75.75"
+adblockDNS[CONTROL D]="76.76.2.2"
+adblockDNS[dnsforge.de]="176.9.93.198"
+
+function query() {
+    domain="$1"
+    dns="$2"
+    filterDetect="$3"
+
+    result="$(dig +short "$domain" @"$dns" | head -n 1)"
+
+    if [ "filterDetect" != "$filterDetect" ]; then
+        test "" != "$result"
+        return $?
+    fi
+    # Determine if domain blocked by specified DNS
+    #
+    # Some DNS resolvers returned a not routable IP address,
+    # some DNS resolvers returned a specified IP for blocked domain to display a notice page
+    case "$result" in
+        # NXDOMAIN, CleanBrowsing & Quad9 return it for blocked domain (OpenDNS sometimes return NXDOMAIN)
+        "") ;&
+        # dnsforge.de or Pi-Hole based blockers
+        "127.0.0.1" ) ;&
+        # Cloudflare & CONTROL D blocked domain
+        "0.0.0.0" | "::") ;&
+        # SafeDNS blocked domain (blockpage.safedns.com)
+        "127.0.0.2" | "195.46.39.1" ) ;&
+        # UltraDNS
+        "156.154.112.16" | "156.154.113.16") ;&
+        # Comodo (warn.recursive.dnsbycomodo.com)
+        "52.15.96.207") ;&
+        # OpenDNS (hit-phish.opendns.com)
+        "146.112.61.108") ;&
+        # Yandex (safe1.yandex.ru)
+        "safe1.yandex.ru." | "213.180.193.250" | "93.158.134.250" | "2a02:6b8::b10c:bad" | "2a02:6b8::b10c:babe")
+            return 1 ;;
+        # Other cases, consider properly resolved
+        *)
+            return 0 ;;
+    esac
+}
+
+function detailQuery() {
+    domain="$1"
+    dns="$2"
+    nslookup "$domain" "$dns" | sed -E -e 's/^(Server|Address):\t.+//g'  -e 's/.+answer:$//g' -e 's/^Name:\t+.+$//g' -e '/^$/d' -e 's/^/   /g'
+}
+
+function chkDomain() {
+    domain="$1"
+    dns="$2"
+    filterDetect="$3"
+    if query "$domain" "$dns" "$filterDetect" ; then
+        echo.Green "OK!"
+    else
+        echo.Red "Failed!"
+        detailQuery "$domain" "$dns"
+    fi
+}
+
+function nofilterDNS() {
+    echo.Cyan "\nRunning dig/nslookup over ${#nofilterDNS[@]} nofilter DNS:"
+
+    for DNS in "${!nofilterDNS[@]}"; do
+        printf " - %s ... " "$DNS (${nofilterDNS[$DNS]})"
+        chkDomain "$domain" "${nofilterDNS[$DNS]}" noFilterDetect
+    done
+}
+
+function secureDNS() {
+    echo.Cyan "\nRunning dig/nslookup over ${#secureDNS[@]} secure DNS:"
+    for DNS in "${!secureDNS[@]}"; do
+        printf " - %s ... " "$DNS (${secureDNS[$DNS]})"
+        chkDomain "$domain" "${secureDNS[$DNS]}" filterDetect
+    done
+}
+
+function adblockDNS() {
+    echo.Cyan "\nRunning dig/nslookup over ${#adblockDNS[@]} AD(and tracker)-blocking DNS:"
+    for DNS in "${!adblockDNS[@]}"; do
+        printf " - %s ... " "$DNS (${adblockDNS[$DNS]})"
+        chkDomain "$domain" "${adblockDNS[$DNS]}" filterDetect
+    done
+}
+
+function defaultDNS() {
+    defaultDNS="$(nslookup wikipedia.org | awk '/Server:/ {print $2}' | head -n 1 )"
+    echo.Cyan "\nRunning nslookup default DNS ($defaultDNS):"
+    printf " - %s ... " "$defaultDNS"
+    chkDomain "$domain" "$defaultDNS"
+}
+
+function domainIntel() {
+    echo.Cyan "\nGet more intels about this domain from:"
+    cat <<HEREDOC
+AlienVault - Open Threat Exchange
+ - https://otx.alienvault.com/indicator/domain/$domain
+Google Safe Browsing
+ - https://transparencyreport.google.com/safe-browsing/search?url=$domain
+McAfee SiteAdvisor
+ - https://siteadvisor.com/sitereport.html?url=$domain
+Norton Safe Web
+ - https://safeweb.norton.com/report/show?url=$domain
+OpenDNS
+ - https://domain.opendns.com/$domain
+URLVoid
+ - https://www.urlvoid.com/scan/$domain/
+VirusTotal
+ - https://www.virustotal.com/en/domain/$domain/information/
+Yandex Site safety report
+ - https://yandex.com/safety/?l10n=en&url=$domain
+
+HEREDOC
+}
+
+echo.Cyan "You are checking domain: $domain"
+
+nofilterDNS
+secureDNS
+adblockDNS
+defaultDNS
+domainIntel
