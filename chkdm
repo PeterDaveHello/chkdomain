@@ -129,11 +129,15 @@ function chkDomain() {
     domain="$1"
     dns="$2"
     filterDetect="$3"
-    if query "$domain" "$dns" "$filterDetect" ; then
+    query "$domain" "$dns" "$filterDetect"
+    queryStatus="$?"
+    if [ "0" = "$queryStatus" ]; then
         echo.Green "OK!"
-    else
+    elif [ "1" = "$queryStatus" ]; then
         echo.Red "Failed!"
         detailQuery "$domain" "$dns"
+    else
+        error "Unknown error"
     fi
 }
 
