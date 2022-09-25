@@ -80,6 +80,8 @@ adblockDNS[AhaDNS]="5.2.75.75"
 adblockDNS[CONTROL D]="76.76.2.2"
 adblockDNS[dnsforge.de]="176.9.93.198"
 
+PaloAltoSinkholeCname="sinkhole.paloaltonetworks.com."
+
 function query() {
     domain="$1"
     dns="$2"
@@ -87,7 +89,9 @@ function query() {
 
     result="$(dig +short "$domain" @"$dns" | head -n 1)"
 
-    if [ "filterDetect" != "$filterDetect" ]; then
+    if [ "$PaloAltoSinkholeCname" = "$result" ]; then
+        return 2
+    elif [ "filterDetect" != "$filterDetect" ]; then
         test "" != "$result"
         return $?
     fi
@@ -136,6 +140,8 @@ function chkDomain() {
     elif [ "1" = "$queryStatus" ]; then
         echo.Red "Failed!"
         detailQuery "$domain" "$dns"
+    elif [ "2" = "$queryStatus" ]; then
+        echo.Red "Palo Alto DNS Sinkhole detected!"
     else
         error "Unknown error"
     fi
