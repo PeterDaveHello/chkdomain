@@ -176,7 +176,7 @@ function defaultDNS() {
     defaultDNS="$(nslookup wikipedia.org | awk '/Server:/ {print $2}' | head -n 1 )"
     echo.Cyan "\nRunning nslookup default DNS ($defaultDNS):"
     printf " - %s ... " "$defaultDNS"
-    chkDomain "$domain" "$defaultDNS"
+    chkDomain "$domain" "$defaultDNS" filterDetect
 }
 
 function domainIntel() {
