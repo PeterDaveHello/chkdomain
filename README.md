@@ -12,10 +12,10 @@ Currently, these are the DNS services we used to send the queries to.
 | [Google][Google] (`8.8.8.8`)                   | [CONTROL D][CONTROL D] (`76.76.2.1`)             | [dnsforge.de][dnsforge.de] (`176.9.93.198`) |
 | [Hinet][Hinet] (`168.95.1.1`)                  | [UltraDNS][UltraDNS] (`156.154.70.2`)            |                                             |
 | [UltraDNS][UltraDNS] (`64.6.64.6`)             | [OpenDNS][OpenDNS] (`208.67.222.222`)            |                                             |
-| [OpenDNS][OpenDNS] (`208.67.222.2`)            | [Quad9][Quad9] (`9.9.9.9`)                       |                                             |
-| [Quad101][Quad101] (`101.101.101.101`)         | [SafeDNS][SafeDNS] (`195.46.39.39`)              |                                             |
-| [Quad9][Quad9] (`9.9.9.10`)                    | [Yandex][Yandex] (`77.88.8.2`)                   |                                             |
-| [Yandex][Yandex] (`77.88.8.1`)                 |                                                  |                                             |
+| [OpenDNS][OpenDNS] (`208.67.222.2`)            | [Quad101][Quad101] (`101.101.101.101`)           |                                             |
+| [Quad9][Quad9] (`9.9.9.10`)                    | [Quad9][Quad9] (`9.9.9.9`)                       |                                             |
+| [Yandex][Yandex] (`77.88.8.1`)                 | [SafeDNS][SafeDNS] (`195.46.39.39`)              |                                             |
+|                                                | [Yandex][Yandex] (`77.88.8.2`)                   |                                             |
 
 If you're like to build up your own secure DNS, here's a list of threat hosts intelligence: [threat-hostlist](https://github.com/PeterDaveHello/threat-hostlist), you can setup a DNS blocker with those blocklists to run your own secure DNS service, in your home, your office, or anywhere.
 
