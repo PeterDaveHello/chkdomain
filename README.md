@@ -8,14 +8,14 @@ Currently, these are the DNS services we used to send the queries to.
 | ---------------------------------------------- | ------------------------------------------------ | ------------------------------------------- |
 | [AdGuard][AdGuard] (`94.140.14.140`)           | [CleanBrowsing][CleanBrowsing] (`185.228.168.9`) | [AdGuard][AdGuard] (`94.140.14.14`)         |
 | [Cloudflare][Cloudflare] (`1.1.1.1`)           | [Cloudflare][Cloudflare] (`1.1.1.2`)             | [AhaDNS][AhaDNS] (`5.2.75.75`)              |
-| [Freenom World][Freenom World] (`80.80.80.80`) | [Comodo][Comodo] (`8.26.56.26`)                  | [CONTROL D][CONTROL D] (`76.76.2.2`)        |
-| [Google][Google] (`8.8.8.8`)                   | [CONTROL D][CONTROL D] (`76.76.2.1`)             | [dnsforge.de][dnsforge.de] (`176.9.93.198`) |
-| [Hinet][Hinet] (`168.95.1.1`)                  | [UltraDNS][UltraDNS] (`156.154.70.2`)            |                                             |
-| [UltraDNS][UltraDNS] (`64.6.64.6`)             | [OpenDNS][OpenDNS] (`208.67.222.222`)            |                                             |
-| [OpenDNS][OpenDNS] (`208.67.222.2`)            | [Quad101][Quad101] (`101.101.101.101`)           |                                             |
-| [Quad9][Quad9] (`9.9.9.10`)                    | [Quad9][Quad9] (`9.9.9.9`)                       |                                             |
-| [Yandex][Yandex] (`77.88.8.1`)                 | [SafeDNS][SafeDNS] (`195.46.39.39`)              |                                             |
-|                                                | [Yandex][Yandex] (`77.88.8.2`)                   |                                             |
+| [DNS.WATCH][DNS.WATCH] (`84.200.69.80`)        | [Comodo][Comodo] (`8.26.56.26`)                  | [CONTROL D][CONTROL D] (`76.76.2.2`)        |
+| [Freenom World][Freenom World] (`80.80.80.80`) | [CONTROL D][CONTROL D] (`76.76.2.1`)             | [dnsforge.de][dnsforge.de] (`176.9.93.198`) |
+| [Google][Google] (`8.8.8.8`)                   | [UltraDNS][UltraDNS] (`156.154.70.2`)            |                                             |
+| [Hinet][Hinet] (`168.95.1.1`)                  | [OpenDNS][OpenDNS] (`208.67.222.222`)            |                                             |
+| [UltraDNS][UltraDNS] (`64.6.64.6`)             | [Quad101][Quad101] (`101.101.101.101`)           |                                             |
+| [OpenDNS][OpenDNS] (`208.67.222.2`)            | [Quad9][Quad9] (`9.9.9.9`)                       |                                             |
+| [Quad9][Quad9] (`9.9.9.10`)                    | [SafeDNS][SafeDNS] (`195.46.39.39`)              |                                             |
+| [Yandex][Yandex] (`77.88.8.1`)                 | [Yandex][Yandex] (`77.88.8.2`)                   |                                             |
 
 If you're like to build up your own secure DNS, here's a list of threat hosts intelligence: [threat-hostlist](https://github.com/PeterDaveHello/threat-hostlist), you can setup a DNS blocker with those blocklists to run your own secure DNS service, in your home, your office, or anywhere.
 
@@ -69,6 +69,7 @@ GPL-3.0 (GNU GENERAL PUBLIC LICENSE Version 3)
 [Cloudflare]: https://1.1.1.1/family/
 [Comodo]: https://www.comodo.com/secure-dns/
 [CONTROL D]: https://controld.com/
+[DNS.WATCH]: https://dns.watch/
 [dnsforge.de]: https://dnsforge.de/
 [Freenom World]: https://www.freenom.world/
 [Google]: https://developers.google.com/speed/public-dns/
