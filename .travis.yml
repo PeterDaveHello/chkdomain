@@ -1,0 +1,50 @@
+language: minimal
+dist: jammy
+
+git:
+  depth: 5
+
+jobs:
+  include:
+
+  - stage: Static tests
+    env:
+      - task=shellcheck
+    script:
+      - shellcheck chkdm
+  - stage: Static tests
+    language: node_js
+    node_js:
+      - "18"
+    env:
+      - task=editorconfig-check
+    install:
+      - npm i -g echint
+    script:
+      - echint
+
+  - stage: Ubuntu runtime test
+    env:
+      - task=Ubuntu-runtime
+    before_script:
+      - echo $PATH
+      - type bash && bash --version
+    script:
+      - ./chkdm dnslow.me
+
+  - stage: macOS runtime test
+    os: osx
+    osx_image: xcode14.2
+    env:
+      - task=macOS-runtime
+    addons:
+      homebrew:
+        packages:
+          - bash
+    before_script:
+      - echo $PATH
+      - brew info bash
+      - which bash
+      - env bash --version
+    script:
+      - ./chkdm dnslow.me
