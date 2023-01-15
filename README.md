@@ -10,7 +10,7 @@ Currently, these are the DNS services we used to send the queries to.
 | [Cloudflare][Cloudflare] (`1.1.1.1`)           | [Cloudflare][Cloudflare] (`1.1.1.2`)             | [AhaDNS][AhaDNS] (`5.2.75.75`)              |
 | [DNS.WATCH][DNS.WATCH] (`84.200.69.80`)        | [Comodo][Comodo] (`8.26.56.26`)                  | [CONTROL D][CONTROL D] (`76.76.2.2`)        |
 | [Freenom World][Freenom World] (`80.80.80.80`) | [CONTROL D][CONTROL D] (`76.76.2.1`)             | [dnsforge.de][dnsforge.de] (`176.9.93.198`) |
-| [Google][Google] (`8.8.8.8`)                   | [UltraDNS][UltraDNS] (`156.154.70.2`)            |                                             |
+| [Google][Google] (`8.8.8.8`)                   | [UltraDNS][UltraDNS] (`156.154.70.2`)            | [Tiarap][Tiarap] (`188.166.206.224`)        |
 | [Hinet][Hinet] (`168.95.1.1`)                  | [OpenDNS][OpenDNS] (`208.67.222.222`)            |                                             |
 | [UltraDNS][UltraDNS] (`64.6.64.6`)             | [Quad101][Quad101] (`101.101.101.101`)           |                                             |
 | [OpenDNS][OpenDNS] (`208.67.222.2`)            | [Quad9][Quad9] (`9.9.9.9`)                       |                                             |
@@ -79,4 +79,5 @@ GPL-3.0 (GNU GENERAL PUBLIC LICENSE Version 3)
 [Quad101]: https://101.101.101.101/
 [Quad9]: https://quad9.net/
 [SafeDNS]: https://www.safedns.com/
+[Tiarap]: https://tiarap.org/
 [Yandex]: https://dns.yandex.com/
