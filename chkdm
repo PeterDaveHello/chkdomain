@@ -191,21 +191,21 @@ function domainIntel() {
     echo.Cyan "\nGet more intels about this domain from:"
     cat <<HEREDOC
 AlienVault - Open Threat Exchange
- - https://otx.alienvault.com/indicator/domain/$domain
+  - https://otx.alienvault.com/indicator/domain/$domain
 Google Safe Browsing
- - https://transparencyreport.google.com/safe-browsing/search?url=$domain
+  - https://transparencyreport.google.com/safe-browsing/search?url=$domain
 McAfee SiteAdvisor
- - https://siteadvisor.com/sitereport.html?url=$domain
+  - https://siteadvisor.com/sitereport.html?url=$domain
 Norton Safe Web
- - https://safeweb.norton.com/report/show?url=$domain
+  - https://safeweb.norton.com/report/show?url=$domain
 OpenDNS
- - https://domain.opendns.com/$domain
+  - https://domain.opendns.com/$domain
 URLVoid
- - https://www.urlvoid.com/scan/$domain/
+  - https://www.urlvoid.com/scan/$domain/
 VirusTotal
- - https://www.virustotal.com/en/domain/$domain/information/
+  - https://www.virustotal.com/en/domain/$domain/information/
 Yandex Site safety report
- - https://yandex.com/safety/?l10n=en&url=$domain
+  - https://yandex.com/safety/?l10n=en&url=$domain
 
 HEREDOC
 }
