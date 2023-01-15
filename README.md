@@ -29,6 +29,7 @@ Only a few command-line tools are needed:
 - head
 - nslookup
 - sed
+- sort
 
 ## Usage
 

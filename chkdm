@@ -44,7 +44,7 @@ if [ "$#" -ne "1" ]; then
     exit 1
 fi
 
-for cmd in dig nslookup sed head awk; do
+for cmd in dig nslookup sed head awk sort; do
     if ! command -v $cmd > /dev/null 2>&1; then
         error "command: $cmd not found!"
     fi
@@ -152,8 +152,9 @@ function chkDomain() {
 
 function nofilterDNS() {
     echo.Cyan "\nRunning dig/nslookup over ${#nofilterDNS[@]} nofilter DNS:"
-
-    for DNS in "${!nofilterDNS[@]}"; do
+    keys=()
+    while IFS='' read -r line; do keys+=("$line"); done < <(for DNS in "${!nofilterDNS[@]}"; do echo "$DNS"; done | sort)
+    for DNS in "${keys[@]}"; do
         printf " - %s ... " "$DNS (${nofilterDNS[$DNS]})"
         chkDomain "$domain" "${nofilterDNS[$DNS]}" noFilterDetect
     done
@@ -161,7 +162,9 @@ function nofilterDNS() {
 
 function secureDNS() {
     echo.Cyan "\nRunning dig/nslookup over ${#secureDNS[@]} secure DNS:"
-    for DNS in "${!secureDNS[@]}"; do
+    keys=()
+    while IFS='' read -r line; do keys+=("$line"); done < <(for DNS in "${!secureDNS[@]}"; do echo "$DNS"; done | sort)
+    for DNS in "${keys[@]}"; do
         printf " - %s ... " "$DNS (${secureDNS[$DNS]})"
         chkDomain "$domain" "${secureDNS[$DNS]}" filterDetect
     done
@@ -169,7 +172,9 @@ function secureDNS() {
 
 function adblockDNS() {
     echo.Cyan "\nRunning dig/nslookup over ${#adblockDNS[@]} AD(and tracker)-blocking DNS:"
-    for DNS in "${!adblockDNS[@]}"; do
+    keys=()
+    while IFS='' read -r line; do keys+=("$line"); done < <(for DNS in "${!adblockDNS[@]}"; do echo "$DNS"; done | sort)
+    for DNS in "${keys[@]}"; do
         printf " - %s ... " "$DNS (${adblockDNS[$DNS]})"
         chkDomain "$domain" "${adblockDNS[$DNS]}" filterDetect
     done
