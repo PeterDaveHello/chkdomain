@@ -17,6 +17,19 @@ Currently, these are the DNS services we used to send the queries to.
 | [Quad9][Quad9] (`9.9.9.10`)                    | [SafeDNS][SafeDNS] (`195.46.39.39`)              |                                             |
 | [Yandex][Yandex] (`77.88.8.1`)                 | [Yandex][Yandex] (`77.88.8.2`)                   |                                             |
 
+And these are the intelligence services that will be listed with directly link to the domain been checked:
+
+- AlienVault Open Threat Exchange
+- Bitdefender TrafficLight
+- FortiGuard Web Filter Lookup
+- Google Safe Browsing
+- McAfee SiteAdvisor
+- Norton Safe Web
+- OpenDNS
+- URLVoid
+- VirusTotal
+- Yandex Site safety report
+
 If you're like to build up your own secure DNS, here's a list of threat hosts intelligence: [threat-hostlist](https://github.com/PeterDaveHello/threat-hostlist), you can setup a DNS blocker with those blocklists to run your own secure DNS service, in your home, your office, or anywhere.
 
 ## Dependency
