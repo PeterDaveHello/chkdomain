@@ -32,18 +32,6 @@ And these are the intelligence services that will be listed with directly link t
 
 If you're like to build up your own secure DNS, here's a list of threat hosts intelligence: [threat-hostlist](https://github.com/PeterDaveHello/threat-hostlist), you can setup a DNS blocker with those blocklists to run your own secure DNS service, in your home, your office, or anywhere.
 
-## Dependency
-
-Only a few command-line tools are needed:
-
-- awk
-- bash
-- dig
-- head
-- nslookup
-- sed
-- sort
-
 ## Usage
 
 Download [`chkdm`](https://github.com/PeterDaveHello/chkdomain/raw/master/chkdm) script into your working directory, give it executable permission:
@@ -68,6 +56,18 @@ You can also put the script in your `$PATH`, for example: `/usr/local/bin`, so t
 ## Demo
 
 [![asciicast](https://asciinema.org/a/474151.svg)](https://asciinema.org/a/474151)
+
+## Dependency
+
+Only a few command-line tools are needed:
+
+- awk
+- bash
+- dig
+- head
+- nslookup
+- sed
+- sort
 
 ## Notice
 
