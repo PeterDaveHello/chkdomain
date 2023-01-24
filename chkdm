@@ -84,6 +84,7 @@ adblockDNS[OVPN]="192.165.9.157"
 adblockDNS[Tiarap]="188.166.206.224"
 
 PaloAltoSinkholeCname="sinkhole.paloaltonetworks.com."
+NextDNSBlockPageCname="blockpage.nextdns.io."
 
 function query() {
     domain="$1"
@@ -94,6 +95,8 @@ function query() {
 
     if [ "$PaloAltoSinkholeCname" = "$result" ]; then
         return 2
+    elif [ "$NextDNSBlockPageCname" = "$result" ]; then
+        return 3
     elif [ "filterDetect" != "$filterDetect" ]; then
         test "" != "$result"
         return $?
@@ -145,6 +148,8 @@ function chkDomain() {
         detailQuery "$domain" "$dns"
     elif [ "2" = "$queryStatus" ]; then
         echo.Red "Palo Alto DNS Sinkhole detected!"
+    elif [ "3" = "$queryStatus" ]; then
+        echo.Red "NextDNS Block Page detected!"
     else
         error "Unknown error"
     fi
