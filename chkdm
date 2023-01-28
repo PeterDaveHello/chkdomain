@@ -148,7 +148,7 @@ function query() {
 function detailQuery() {
     domain="$1"
     dns="$2"
-    nslookup "$domain" "$dns" | sed -E -e 's/^(Server|Address):\t.+//g'  -e 's/.+answer:$//g' -e 's/^Name:\t+.+$//g' -e '/^$/d' -e 's/^/   /g'
+    nslookup "$domain" "$dns" | sed -E -e 's/^(Server|Address):\t.+//g'  -e 's/.+answer:$//g' -e 's/^Name:\t+.+$//g' -e '/^$/d' -e 's/^/   /g' | sort -V | uniq
 }
 
 function chkDomain() {
