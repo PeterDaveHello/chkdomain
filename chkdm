@@ -32,6 +32,11 @@ function echo.Green() {
 function echo.Cyan() {
   echo -e "\\033[36m$*\\033[m"
 }
+
+function echo.BoldBlack
+{
+    echo -e "\033[1;30m$*\033[m"
+}
 # ColorEchoForShell End #
 
 function error() {
@@ -166,7 +171,7 @@ function nofilterDNS() {
     keys=()
     while IFS='' read -r line; do keys+=("$line"); done < <(for DNS in "${!nofilterDNS[@]}"; do echo "$DNS"; done | sort)
     for DNS in "${keys[@]}"; do
-        printf " - %s ... " "$DNS (${nofilterDNS[$DNS]})"
+        printf " - %s ... " "$DNS $(echo.BoldBlack "(${nofilterDNS[$DNS]})")"
         chkDomain "$domain" "${nofilterDNS[$DNS]}" noFilterDetect
     done
 }
@@ -176,7 +181,7 @@ function secureDNS() {
     keys=()
     while IFS='' read -r line; do keys+=("$line"); done < <(for DNS in "${!secureDNS[@]}"; do echo "$DNS"; done | sort)
     for DNS in "${keys[@]}"; do
-        printf " - %s ... " "$DNS (${secureDNS[$DNS]})"
+        printf " - %s ... " "$DNS $(echo.BoldBlack "(${secureDNS[$DNS]})")"
         chkDomain "$domain" "${secureDNS[$DNS]}" filterDetect
     done
 }
@@ -186,7 +191,7 @@ function adblockDNS() {
     keys=()
     while IFS='' read -r line; do keys+=("$line"); done < <(for DNS in "${!adblockDNS[@]}"; do echo "$DNS"; done | sort)
     for DNS in "${keys[@]}"; do
-        printf " - %s ... " "$DNS (${adblockDNS[$DNS]})"
+        printf " - %s ... " "$DNS $(echo.BoldBlack "(${adblockDNS[$DNS]})")"
         chkDomain "$domain" "${adblockDNS[$DNS]}" filterDetect
     done
 }
