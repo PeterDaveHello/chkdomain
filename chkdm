@@ -85,27 +85,33 @@ adblockDNS[Tiarap]="188.166.206.224"
 
 PaloAltoSinkholeCname="sinkhole.paloaltonetworks.com."
 NextDNSBlockPageCname="blockpage.nextdns.io."
+NextDNSBlockPageIP="$(dig +short $NextDNSBlockPageCname)"
 
 function query() {
     domain="$1"
     dns="$2"
     filterDetect="$3"
 
-    result="$(dig +short "$domain" @"$dns" | head -n 1)"
+    result="$(dig +short "$domain" @"$dns" | xargs)"
 
-    if [ "$PaloAltoSinkholeCname" = "$result" ]; then
+    if echo "$result" | grep -Eq "(^| )$PaloAltoSinkholeCname($| )"; then
         return 2
-    elif [ "$NextDNSBlockPageCname" = "$result" ]; then
-        return 3
+    elif [ "" != "$NextDNSBlockPageIP" ]; then
+        if echo "$result" | grep -Eq "(^| )$NextDNSBlockPageCname($| )" || [ "$NextDNSBlockPageIP" = "$result" ]; then
+            return 3
+        fi
     elif [ "filterDetect" != "$filterDetect" ]; then
         test "" != "$result"
         return $?
     fi
+
     # Determine if domain blocked by specified DNS
     #
     # Some DNS resolvers returned a not routable IP address,
     # some DNS resolvers returned a specified IP for blocked domain to display a notice page
-    case "$result" in
+
+    resultHead="$(echo "$result" | awk '{print $1}')"
+    case "$resultHead" in
         # NXDOMAIN, CleanBrowsing & Quad9 return it for blocked domain (OpenDNS sometimes return NXDOMAIN)
         "") ;&
         # dnsforge.de or Pi-Hole based blockers
