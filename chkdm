@@ -98,6 +98,7 @@ function query() {
     filterDetect="$3"
 
     result="$(dig +short "$domain" @"$dns" | xargs)"
+    echo "$result"
 
     if echo "$result" | grep -Eq "(^| )$PaloAltoSinkholeCname($| )"; then
         return 2
@@ -154,10 +155,11 @@ function chkDomain() {
     domain="$1"
     dns="$2"
     filterDetect="$3"
-    query "$domain" "$dns" "$filterDetect"
+    queryResult="$(query "$domain" "$dns" "$filterDetect")"
     queryStatus="$?"
     if [ "0" = "$queryStatus" ]; then
-        echo.Green "OK!"
+        printf "%s" "$(echo.Green "OK!")"
+        echo.BoldBlack " ($queryResult)"
     elif [ "1" = "$queryStatus" ]; then
         echo.Red "Failed!"
         detailQuery "$domain" "$dns"
