@@ -105,6 +105,10 @@ function query() {
         if echo "$result" | grep -Eq "(^| )$NextDNSBlockPageCname($| )" || [ "$NextDNSBlockPageIP" = "$result" ]; then
             return 3
         fi
+    elif [ ";; connection timed out; no servers could be reached" = "$result" ]; then
+        return 4
+    elif echo "$result" | grep -E ";; communications error to $dns#[0-9]+: connection refused"; then
+        return 5
     elif [ "filterDetect" != "$filterDetect" ]; then
         test "" != "$result"
         return $?
@@ -161,6 +165,10 @@ function chkDomain() {
         echo.Red "Palo Alto DNS Sinkhole detected!"
     elif [ "3" = "$queryStatus" ]; then
         echo.Red "NextDNS Block Page detected!"
+    elif [ "4" = "$queryStatus" ]; then
+        echo "Connection timed out ..."
+    elif [ "5" = "$queryStatus" ]; then
+        echo "Connection refused ..."
     else
         error "Unknown error"
     fi
