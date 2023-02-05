@@ -23,6 +23,7 @@ And these are the intelligence services that will be listed with directly link t
 - Bitdefender TrafficLight
 - FortiGuard Web Filter Lookup
 - Google Safe Browsing
+- Kaspersky Threat Intelligence Portal
 - McAfee SiteAdvisor
 - Norton Safe Web
 - OpenDNS

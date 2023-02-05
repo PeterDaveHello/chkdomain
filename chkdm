@@ -224,6 +224,8 @@ FortiGuard Web Filter Lookup
   - https://www.fortiguard.com/webfilter?q=$domain
 Google Safe Browsing
   - https://transparencyreport.google.com/safe-browsing/search?url=$domain
+Kaspersky Threat Intelligence Portal
+  - https://opentip.kaspersky.com/$domain?tab=web
 McAfee SiteAdvisor
   - https://siteadvisor.com/sitereport.html?url=$domain
 Norton Safe Web
