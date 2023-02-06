@@ -74,6 +74,15 @@ Only a few command-line tools are needed:
 
 Domain name with records like `0.0.0.0` or `127.0.0.1`, like `0.ipinfo.tw` or `1.ipinfo.tw` would have a wrong check result with secure DNS and AD-blocking DNS services, because the current detection about blocked domain is pretty simple. This feature will be improved in the future.
 
+## Additional Resources
+
+There're also some malicous domains blocking services, but they didn't directly provide DNS serivces, can't be quried via HTTP GET method, so we aren't able to integrate, or list corresponding query URL in the check results, however, they are provided by leading security companies, which makes them worthy to be mentioned, and they do provide a web interface that you can manually to submit a domain to retrive the intelligence. Those services are listed as below:
+
+- Trend Micro Site Safety Center
+  - <https://global.sitesafety.trendmicro.com>
+- Palo Alto Networks URL filtering
+  - <https://urlfiltering.paloaltonetworks.com/>
+
 ## License
 
 GPL-3.0 (GNU GENERAL PUBLIC LICENSE Version 3)
