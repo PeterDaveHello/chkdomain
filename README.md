@@ -8,7 +8,7 @@ Currently, these are the DNS services we used to send the queries to.
 | ---------------------------------------------- | ------------------------------------------------ | ------------------------------------------- |
 | [AdGuard][AdGuard] (`94.140.14.140`)           | [CleanBrowsing][CleanBrowsing] (`185.228.168.9`) | [AdGuard][AdGuard] (`94.140.14.14`)         |
 | [Cloudflare][Cloudflare] (`1.1.1.1`)           | [Cloudflare][Cloudflare] (`1.1.1.2`)             | [AhaDNS][AhaDNS] (`5.2.75.75`)              |
-| [DNS.WATCH][DNS.WATCH] (`84.200.70.40`)        | [Comodo][Comodo] (`8.26.56.26`)                  | [CONTROL D][CONTROL D] (`76.76.2.2`)        |
+| [dns0.eu][dns0.eu] (`193.110.81.254`)          | [Comodo][Comodo] (`8.26.56.26`)                  | [CONTROL D][CONTROL D] (`76.76.2.2`)        |
 | [Freenom World][Freenom World] (`80.80.80.80`) | [CONTROL D][CONTROL D] (`76.76.2.1`)             | [dnsforge.de][dnsforge.de] (`176.9.93.198`) |
 | [Google][Google] (`8.8.8.8`)                   | [UltraDNS][UltraDNS] (`156.154.70.2`)            | [OVPN][OVPN] (`192.165.9.157`)              |
 | [Hinet][Hinet] (`168.95.1.1`)                  | [OpenDNS][OpenDNS] (`208.67.222.222`)            | [Tiarap][Tiarap] (`188.166.206.224`)        |
@@ -93,7 +93,7 @@ GPL-3.0 (GNU GENERAL PUBLIC LICENSE Version 3)
 [Cloudflare]: https://1.1.1.1/family/
 [Comodo]: https://www.comodo.com/secure-dns/
 [CONTROL D]: https://controld.com/
-[DNS.WATCH]: https://dns.watch/
+[dns0.eu]: https://www.dns0.eu/
 [dnsforge.de]: https://dnsforge.de/
 [Freenom World]: https://www.freenom.world/
 [Google]: https://developers.google.com/speed/public-dns/
