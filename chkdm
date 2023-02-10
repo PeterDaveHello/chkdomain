@@ -61,7 +61,7 @@ declare -A nofilterDNS secureDNS adblockDNS
 
 nofilterDNS[AdGuard]="94.140.14.140"
 nofilterDNS[Cloudflare]="1.1.1.1"
-nofilterDNS[DNS.WATCH]="84.200.70.40"
+nofilterDNS[dns0.eu]="193.110.81.254"
 nofilterDNS[Freenom World]="80.80.80.80"
 nofilterDNS[Google]="8.8.8.8"
 nofilterDNS[Hinet]="168.95.1.1"
