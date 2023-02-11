@@ -74,6 +74,7 @@ secureDNS[CleanBrowsing]="185.228.168.9"
 secureDNS[Cloudflare]="1.1.1.2"
 secureDNS[Comodo]="8.26.56.26"
 secureDNS[CONTROL D]="76.76.2.1"
+secureDNS[dns0.eu]="193.110.81.9"
 secureDNS[UltraDNS]="156.154.70.2"
 secureDNS[SafeDNS]="195.46.39.39"
 secureDNS[OpenDNS]="208.67.222.222"
@@ -122,7 +123,7 @@ function query() {
 
     resultHead="$(echo "$result" | awk '{print $1}')"
     case "$resultHead" in
-        # NXDOMAIN, CleanBrowsing & Quad9 return it for blocked domain (OpenDNS sometimes return NXDOMAIN)
+        # NXDOMAIN, CleanBrowsing, dns0.eu & Quad9 return it for blocked domain (OpenDNS sometimes return NXDOMAIN)
         "") ;&
         # dnsforge.de or Pi-Hole based blockers
         "127.0.0.1" ) ;&

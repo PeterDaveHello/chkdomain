@@ -10,12 +10,13 @@ Currently, these are the DNS services we used to send the queries to.
 | [Cloudflare][Cloudflare] (`1.1.1.1`)           | [Cloudflare][Cloudflare] (`1.1.1.2`)             | [AhaDNS][AhaDNS] (`5.2.75.75`)              |
 | [dns0.eu][dns0.eu] (`193.110.81.254`)          | [Comodo][Comodo] (`8.26.56.26`)                  | [CONTROL D][CONTROL D] (`76.76.2.2`)        |
 | [Freenom World][Freenom World] (`80.80.80.80`) | [CONTROL D][CONTROL D] (`76.76.2.1`)             | [dnsforge.de][dnsforge.de] (`176.9.93.198`) |
-| [Google][Google] (`8.8.8.8`)                   | [UltraDNS][UltraDNS] (`156.154.70.2`)            | [OVPN][OVPN] (`192.165.9.157`)              |
-| [Hinet][Hinet] (`168.95.1.1`)                  | [OpenDNS][OpenDNS] (`208.67.222.222`)            | [Tiarap][Tiarap] (`188.166.206.224`)        |
-| [UltraDNS][UltraDNS] (`64.6.64.6`)             | [Quad101][Quad101] (`101.101.101.101`)           |                                             |
-| [OpenDNS][OpenDNS] (`208.67.222.2`)            | [Quad9][Quad9] (`9.9.9.9`)                       |                                             |
-| [Quad9][Quad9] (`9.9.9.10`)                    | [SafeDNS][SafeDNS] (`195.46.39.39`)              |                                             |
-| [Yandex][Yandex] (`77.88.8.1`)                 | [Yandex][Yandex] (`77.88.8.2`)                   |                                             |
+| [Google][Google] (`8.8.8.8`)                   | [dns0.eu][dns0.eu] (`193.110.81.9`)              | [OVPN][OVPN] (`192.165.9.157`)              |
+| [Hinet][Hinet] (`168.95.1.1`)                  | [UltraDNS][UltraDNS] (`156.154.70.2`)            | [Tiarap][Tiarap] (`188.166.206.224`)        |
+| [UltraDNS][UltraDNS] (`64.6.64.6`)             | [OpenDNS][OpenDNS] (`208.67.222.222`)            |                                             |
+| [OpenDNS][OpenDNS] (`208.67.222.2`)            | [Quad101][Quad101] (`101.101.101.101`)           |                                             |
+| [Quad9][Quad9] (`9.9.9.10`)                    | [Quad9][Quad9] (`9.9.9.9`)                       |                                             |
+| [Yandex][Yandex] (`77.88.8.1`)                 | [SafeDNS][SafeDNS] (`195.46.39.39`)              |                                             |
+|                                                | [Yandex][Yandex] (`77.88.8.2`)                   |                                             |
 
 And these are the intelligence services that will be listed with directly link to the domain been checked:
 
