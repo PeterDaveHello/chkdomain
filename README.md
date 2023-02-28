@@ -20,17 +20,17 @@ Currently, these are the DNS services we used to send the queries to.
 
 And these are the intelligence services that will be listed with directly link to the domain been checked:
 
-- AlienVault Open Threat Exchange
-- Bitdefender TrafficLight
-- FortiGuard Web Filter Lookup
-- Google Safe Browsing
-- Kaspersky Threat Intelligence Portal
-- McAfee SiteAdvisor
-- Norton Safe Web
-- OpenDNS
-- URLVoid
-- VirusTotal
-- Yandex Site safety report
+- [AlienVault Open Threat Exchange](https://otx.alienvault.com/)
+- [Bitdefender TrafficLight](https://trafficlight.bitdefender.com/info/)
+- [FortiGuard Web Filter Lookup](https://www.fortiguard.com/webfilter)
+- [Google Safe Browsing](https://transparencyreport.google.com/safe-browsing/search)
+- [Kaspersky Threat Intelligence Portal](https://opentip.kaspersky.com/?tab=lookup)
+- [McAfee SiteAdvisor](https://siteadvisor.com/)
+- [Norton Safe Web](https://safeweb.norton.com/)
+- [OpenDNS](https://domain.opendns.com/)
+- [URLVoid](https://www.urlvoid.com/scan/)
+- [VirusTotal](https://www.virustotal.com/gui/home/url)
+- [Yandex Site safety report](https://yandex.com/safety/)
 
 If you're like to build up your own secure DNS, here's a list of threat hosts intelligence: [threat-hostlist](https://github.com/PeterDaveHello/threat-hostlist), you can setup a DNS blocker with those blocklists to run your own secure DNS service, in your home, your office, or anywhere.
 
