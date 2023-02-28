@@ -222,7 +222,7 @@ AlienVault Open Threat Exchange
 Bitdefender TrafficLight
   - https://trafficlight.bitdefender.com/info/?url=https%3A%2F%2F$domain
 FortiGuard Web Filter Lookup
-  - https://www.fortiguard.com/webfilter?q=$domain
+  - https://www.fortiguard.com/webfilter?data=$domain
 Google Safe Browsing
   - https://transparencyreport.google.com/safe-browsing/search?url=$domain
 Kaspersky Threat Intelligence Portal
