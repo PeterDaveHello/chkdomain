@@ -22,7 +22,6 @@ And these are the intelligence services that will be listed with directly link t
 
 - [AlienVault Open Threat Exchange](https://otx.alienvault.com/)
 - [Bitdefender TrafficLight](https://trafficlight.bitdefender.com/info/)
-- [FortiGuard Web Filter Lookup](https://www.fortiguard.com/webfilter)
 - [Google Safe Browsing](https://transparencyreport.google.com/safe-browsing/search)
 - [Kaspersky Threat Intelligence Portal](https://opentip.kaspersky.com/?tab=lookup)
 - [McAfee SiteAdvisor](https://siteadvisor.com/)
@@ -79,6 +78,8 @@ Domain name with records like `0.0.0.0` or `127.0.0.1`, like `0.ipinfo.tw` or `1
 
 There're also some malicous domains blocking services, but they didn't directly provide DNS serivces, can't be quried via HTTP GET method, so we aren't able to integrate, or list corresponding query URL in the check results, however, they are provided by leading security companies, which makes them worthy to be mentioned, and they do provide a web interface that you can manually to submit a domain to retrive the intelligence. Those services are listed as below:
 
+- FortiGuard Web Filter Lookup
+  - <https://www.fortiguard.com/webfilter>
 - Trend Micro Site Safety Center
   - <https://global.sitesafety.trendmicro.com>
 - Palo Alto Networks URL filtering
