@@ -1,10 +1,11 @@
 # chkdomain
 
-Check if a domain can be resolved or been blocked by no-filter DNS, secure/protective DNS, and AD/Tracker-blocking DNS services. Then provide the links to [OSINT](https://en.wikipedia.org/wiki/Open-source_intelligence), domain threat intelligence, and security services about this domain.
+`chkdomain` checks if a domain can be resolved by no-filter DNS, or has been blocked by secure/protective DNS, and advertisement/tracker-blocking DNS services. It sends queries to well-known DNS servers and checks the resolution success as a basis for determining if the domain is blocked. The tool also provides links to [OSINT](https://en.wikipedia.org/wiki/Open-source_intelligence), domain threat intelligence, and security services for the domain in question.
 
-Currently, these are the DNS services we used to send the queries to.
 
-| **No-filter** DNS                              | **Secure** DNS                                   | **AD/Tracker-blocking** DNS                 |
+The DNS services currently used for sending queries are listed below:
+
+| **No-filter** DNS                              | **Secure** DNS                                   | **Ad/Tracker-blocking** DNS                 |
 | ---------------------------------------------- | ------------------------------------------------ | ------------------------------------------- |
 | [AdGuard][AdGuard] (`94.140.14.140`)           | [CleanBrowsing][CleanBrowsing] (`185.228.168.9`) | [AdGuard][AdGuard] (`94.140.14.14`)         |
 | [Cloudflare][Cloudflare] (`1.1.1.1`)           | [Cloudflare][Cloudflare] (`1.1.1.2`)             | [AhaDNS][AhaDNS] (`5.2.75.75`)              |
@@ -18,7 +19,7 @@ Currently, these are the DNS services we used to send the queries to.
 | [Yandex][Yandex] (`77.88.8.1`)                 | [SafeDNS][SafeDNS] (`195.46.39.39`)              |                                             |
 |                                                | [Yandex][Yandex] (`77.88.8.2`)                   |                                             |
 
-And these are the intelligence services that will be listed with directly link to the domain been checked:
+After checking the domain, `chkdomain` provides direct links to the following intelligence services for more information:
 
 - [AlienVault Open Threat Exchange](https://otx.alienvault.com/)
 - [Bitdefender TrafficLight](https://trafficlight.bitdefender.com/info/)
@@ -31,24 +32,24 @@ And these are the intelligence services that will be listed with directly link t
 - [VirusTotal](https://www.virustotal.com/gui/home/url)
 - [Yandex Site safety report](https://yandex.com/safety/)
 
-If you're like to build up your own secure DNS, here's a list of threat hosts intelligence: [threat-hostlist](https://github.com/PeterDaveHello/threat-hostlist), you can setup a DNS blocker with those blocklists to run your own secure DNS service, in your home, your office, or anywhere.
+If you'd like to build up your own secure DNS, check out the [threat-hostlist](https://github.com/PeterDaveHello/threat-hostlist) repository. It contains many different threat-blocking blocklists to help you create a secure DNS service for your home, office, or elsewhere.
 
 ## Usage
 
-Download [`chkdm`](https://github.com/PeterDaveHello/chkdomain/raw/master/chkdm) script into your working directory, give it executable permission:
+Download the [`chkdm`](https://github.com/PeterDaveHello/chkdomain/raw/master/chkdm) script and make it executable:
 
 ```sh
 $ wget https://github.com/PeterDaveHello/chkdomain/raw/master/chkdm
 $ chmod +x chkdm
 ```
 
-Now you can check the domain with command `chkdm`:
+Check domain by running `chkdm`:
 
 ```sh
 $ ./chkdm <domain name>
 ```
 
-You can also put the script in your `$PATH`, for example: `/usr/local/bin`, so that you can execute it everywhere.
+Additionally, you can put the script in your `$PATH`, such as `/usr/local/bin`, to make it executable from anywhere.
 
 ## Screenshot
 
@@ -70,13 +71,15 @@ Only a few command-line tools are needed:
 - sed
 - sort
 
+Most of the commands (`awk`, `bash`, `head`, `sed`, and `sort`) come pre-installed on common Linux distributions. To install `dig` and `nslookup`, use your package manager (e.g., `apt`, `yum`, `pacman`) to install the `dnsutils` (Debian/Ubuntu) or `bind-utils` (RHEL/CentOS, Arch/Manjaro) package.
+
 ## Notice
 
-Domain name with records like `0.0.0.0` or `127.0.0.1`, like `0.ipinfo.tw` or `1.ipinfo.tw` would have a wrong check result with secure DNS and AD-blocking DNS services, because the current detection about blocked domain is pretty simple. This feature will be improved in the future.
+Please be aware that domain names with records such as `0.0.0.0` or `127.0.0.1` (e.g., `0.ipinfo.tw` or `1.ipinfo.tw`) may yield incorrect results when checked with secure DNS and ad-blocking DNS services. The current detection method for blocked domains is relatively simple. We plan to improve this feature in future updates.
 
 ## Additional Resources
 
-There're also some malicous domains blocking services, but they didn't directly provide DNS serivces, can't be quried via HTTP GET method, so we aren't able to integrate, or list corresponding query URL in the check results, however, they are provided by leading security companies, which makes them worthy to be mentioned, and they do provide a web interface that you can manually to submit a domain to retrive the intelligence. Those services are listed as below:
+There are also some malicious domains blocking services that don't directly provide DNS services and can't be queried via the HTTP GET method. As a result, we are unable to integrate them or list their corresponding query URLs in the check results. However, since they are provided by leading security companies and offer a web interface that allows you to manually submit a domain to retrieve the related intelligence, they are worth mentioning. The services are listed below:
 
 - FortiGuard Web Filter Lookup
   - <https://www.fortiguard.com/webfilter>
