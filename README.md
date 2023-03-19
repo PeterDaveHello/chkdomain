@@ -29,6 +29,7 @@ After checking the domain, `chkdomain` provides direct links to the following in
 - [Norton Safe Web](https://safeweb.norton.com/)
 - [OpenDNS](https://domain.opendns.com/)
 - [URLVoid](https://www.urlvoid.com/scan/)
+- [urlscan.io](https://urlscan.io/)
 - [VirusTotal](https://www.virustotal.com/gui/home/url)
 - [Yandex Site safety report](https://yandex.com/safety/)
 

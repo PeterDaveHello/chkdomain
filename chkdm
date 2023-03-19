@@ -233,6 +233,8 @@ OpenDNS
   - https://domain.opendns.com/$domain
 URLVoid
   - https://www.urlvoid.com/scan/$domain/
+urlscan.io
+  - https://urlscan.io/domain/$domain
 VirusTotal
   - https://www.virustotal.com/en/domain/$domain/information/
 Yandex Site safety report
