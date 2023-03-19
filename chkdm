@@ -177,7 +177,7 @@ function chkDomain() {
     fi
 }
 
-function nofilterDNS() {
+function checkNofilterDNS() {
     echo.Cyan "\nRunning dig/nslookup over ${#nofilterDNS[@]} nofilter DNS:"
     keys=()
     while IFS='' read -r line; do keys+=("$line"); done < <(for DNS in "${!nofilterDNS[@]}"; do echo "$DNS"; done | sort)
@@ -187,7 +187,7 @@ function nofilterDNS() {
     done
 }
 
-function secureDNS() {
+function checkSecureDNS() {
     echo.Cyan "\nRunning dig/nslookup over ${#secureDNS[@]} secure DNS:"
     keys=()
     while IFS='' read -r line; do keys+=("$line"); done < <(for DNS in "${!secureDNS[@]}"; do echo "$DNS"; done | sort)
@@ -197,7 +197,7 @@ function secureDNS() {
     done
 }
 
-function adblockDNS() {
+function checkAdblockDNS() {
     echo.Cyan "\nRunning dig/nslookup over ${#adblockDNS[@]} AD(and tracker)-blocking DNS:"
     keys=()
     while IFS='' read -r line; do keys+=("$line"); done < <(for DNS in "${!adblockDNS[@]}"; do echo "$DNS"; done | sort)
@@ -207,14 +207,14 @@ function adblockDNS() {
     done
 }
 
-function defaultDNS() {
+function checkDefaultDNS() {
     defaultDNS="$(nslookup wikipedia.org | awk '/Server:/ {print $2}' | head -n 1 )"
     echo.Cyan "\nRunning nslookup default DNS ($defaultDNS):"
     printf " - %s ... " "$defaultDNS"
     chkDomain "$domain" "$defaultDNS" filterDetect
 }
 
-function domainIntel() {
+function showDomainIntel() {
     echo.Cyan "\nGet more intels about this domain from:"
     cat <<HEREDOC
 AlienVault Open Threat Exchange
@@ -243,8 +243,8 @@ HEREDOC
 
 echo.Cyan "You are checking domain: $domain"
 
-nofilterDNS
-secureDNS
-adblockDNS
-defaultDNS
-domainIntel
+checkNofilterDNS
+checkSecureDNS
+checkAdblockDNS
+checkDefaultDNS
+showDomainIntel
