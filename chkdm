@@ -55,7 +55,9 @@ for cmd in dig nslookup sed head awk sort; do
     fi
 done
 
-domain="$1"
+shopt -s extglob
+domain="${1%%+(.)}"
+shopt -u extglob
 
 declare -A nofilterDNS secureDNS adblockDNS
 
