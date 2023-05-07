@@ -1,5 +1,7 @@
 # chkdomain
 
+[![Build Status](https://app.travis-ci.com/PeterDaveHello/chkdomain.svg?branch=master)](https://app.travis-ci.com/PeterDaveHello/chkdomain)
+
 `chkdomain` checks if a domain can be resolved by no-filter DNS, or has been blocked by secure/protective DNS, and advertisement/tracker-blocking DNS services. It sends queries to well-known DNS servers and checks the resolution success as a basis for determining if the domain is blocked. The tool also provides links to [OSINT](https://en.wikipedia.org/wiki/Open-source_intelligence), domain threat intelligence, and security services for the domain in question.
 
 
