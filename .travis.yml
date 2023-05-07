@@ -23,7 +23,7 @@ jobs:
     script:
       - echint
 
-  - stage: Ubuntu runtime test
+  - stage: Ubuntu test
     env:
       - task=Ubuntu-runtime
     before_script:
@@ -32,7 +32,14 @@ jobs:
     script:
       - ./chkdm dnslow.me
 
-  - stage: macOS runtime test
+  - stage: Ubuntu test
+    env:
+      - task=Ubuntu-Make-install-uninstall
+    script:
+      - sudo make install && ls /usr/local/bin/chkdm
+      - sudo make uninstall && ! ls /usr/local/bin/chkdm
+
+  - stage: macOS test
     os: osx
     osx_image: xcode14.2
     env:
@@ -48,3 +55,12 @@ jobs:
       - env bash --version
     script:
       - ./chkdm dnslow.me
+
+  - stage: macOS test
+    os: osx
+    osx_image: xcode14.2
+    env:
+      - task=macOS-Make-install-uninstall
+    script:
+      - sudo make install && ls /usr/local/bin/chkdm
+      - sudo make uninstall && ! ls /usr/local/bin/chkdm
