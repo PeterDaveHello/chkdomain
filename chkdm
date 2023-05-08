@@ -91,6 +91,10 @@ adblockDNS[dnsforge.de]="176.9.93.198"
 adblockDNS[OVPN]="192.165.9.157"
 adblockDNS[Tiarap]="188.166.206.224"
 
+# Not following: chkdm.additional_dns was not specified as input (see shellcheck -x). [SC1091]
+# shellcheck disable=SC1091
+[ -f chkdm.additional_dns ] && . chkdm.additional_dns
+
 PaloAltoSinkholeCname="sinkhole.paloaltonetworks.com."
 NextDNSBlockPageCname="blockpage.nextdns.io."
 NextDNSBlockPageIP="$(dig +short $NextDNSBlockPageCname)"
