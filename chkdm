@@ -111,6 +111,8 @@ function query() {
         fi
     elif [ ";; connection timed out; no servers could be reached" = "$result" ]; then
         return 4
+    elif echo "$result" | grep -E ";; communications error to $dns#[1-9]+: timed out"; then
+        return 4
     elif echo "$result" | grep -E ";; communications error to $dns#[0-9]+: connection refused"; then
         return 5
     elif [ "filterDetect" != "$filterDetect" ]; then
