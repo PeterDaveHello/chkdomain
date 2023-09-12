@@ -242,6 +242,8 @@ urlscan.io
   - https://urlscan.io/domain/$domain
 VirusTotal
   - https://www.virustotal.com/en/domain/$domain/information/
+Whois.com
+  - https://www.whois.com/whois/$domain
 Yandex Site safety report
   - https://yandex.com/safety/?l10n=en&url=$domain
 

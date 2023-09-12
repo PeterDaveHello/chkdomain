@@ -33,6 +33,7 @@ After checking the domain, `chkdomain` provides direct links to the following in
 - [URLVoid](https://www.urlvoid.com/scan/)
 - [urlscan.io](https://urlscan.io/)
 - [VirusTotal](https://www.virustotal.com/gui/home/url)
+- [Whois.com](https://www.whois.com/whois/)
 - [Yandex Site safety report](https://yandex.com/safety/)
 
 If you'd like to build up your own secure DNS, check out the [threat-hostlist](https://github.com/PeterDaveHello/threat-hostlist) repository. It contains many different threat-blocking blocklists to help you create a secure DNS service for your home, office, or elsewhere.
