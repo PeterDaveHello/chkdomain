@@ -29,8 +29,11 @@ jobs:
     before_script:
       - echo $PATH
       - type bash && bash --version
+      - echo -e '8.8.4.4\n1.0.0.1\n1.1' > CustomDNS.txt
+      - echo -e '223.5.5.5\n114.114.114.114' > CustomDNS2.txt
     script:
       - ./chkdm dnslow.me
+      - CustomDNSFile=./CustomDNS2.txt ./chkdm dnslow.me
 
   - stage: Ubuntu test
     env:
@@ -53,8 +56,11 @@ jobs:
       - brew info bash
       - which bash
       - env bash --version
+      - echo -e '8.8.4.4\n1.0.0.1\n1.1' > CustomDNS.txt
+      - echo -e '223.5.5.5\n114.114.114.114' > CustomDNS2.txt
     script:
       - ./chkdm dnslow.me
+      - CustomDNSFile=./CustomDNS2.txt ./chkdm dnslow.me
 
   - stage: macOS test
     os: osx
