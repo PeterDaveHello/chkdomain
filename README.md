@@ -55,6 +55,24 @@ $ ./chkdm <domain name>
 
 Additionally, you can put the script in your `$PATH`, such as `/usr/local/bin`, to make it executable from anywhere.
 
+### Using Custom DNS
+
+For custom DNS checks, create `CustomDNS.txt` in the script's directory, listing your DNS server IPs. Use # for comments:
+
+```txt
+127.0.0.1
+192.168.1.1       # Local DNS
+168.95.192.1      # Hinet DNS
+```
+
+If you wish to use a custom file location, you can specify a custom file using `CustomDNSFile` variable before executing:
+
+```sh
+CustomDNSFile="/path/to/your/dnsfile.txt" ./chkdm ipinfo.tw
+```
+
+The script will then include these servers in its checks and provide results.
+
 ## Screenshot
 
 ![Screenshot](chkdomain.png)
@@ -70,12 +88,14 @@ Only a few command-line tools are needed:
 - awk
 - bash
 - dig
+- dirname
 - head
 - nslookup
+- readlink
 - sed
 - sort
 
-Most of the commands (`awk`, `bash`, `head`, `sed`, and `sort`) come pre-installed on common Linux distributions. To install `dig` and `nslookup`, use your package manager (e.g., `apt`, `yum`, `pacman`) to install the `dnsutils` (Debian/Ubuntu) or `bind-utils` (RHEL/CentOS, Arch/Manjaro) package.
+Most of the commands (`awk`, `bash`, `dirname`, `head`, `readlink`, `sed`, and `sort`) come pre-installed on common Linux distributions. To install `dig` and `nslookup`, use your package manager (e.g., `apt`, `yum`, `pacman`) to install the `dnsutils` (Debian/Ubuntu) or `bind-utils` (RHEL/CentOS, Arch/Manjaro) package.
 
 ## Notice
 
