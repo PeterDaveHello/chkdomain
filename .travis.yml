@@ -34,6 +34,8 @@ jobs:
     script:
       - ./chkdm dnslow.me
       - CustomDNSFile=./CustomDNS2.txt ./chkdm dnslow.me
+      - rm CustomDNS.txt && ./chkdm dnslow.me
+      - CustomDNSFile=./CustomDNS-not-exist.txt ./chkdm dnslow.me
 
   - stage: Ubuntu test
     env:
@@ -61,6 +63,8 @@ jobs:
     script:
       - ./chkdm dnslow.me
       - CustomDNSFile=./CustomDNS2.txt ./chkdm dnslow.me
+      - rm CustomDNS.txt && ./chkdm dnslow.me
+      - CustomDNSFile=./CustomDNS-not-exist.txt ./chkdm dnslow.me
 
   - stage: macOS test
     os: osx
