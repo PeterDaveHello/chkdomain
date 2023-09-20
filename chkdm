@@ -255,7 +255,7 @@ URLVoid
 urlscan.io
   - https://urlscan.io/domain/$domain
 VirusTotal
-  - https://www.virustotal.com/en/domain/$domain/information/
+  - https://www.virustotal.com/gui/domain/$domain/detection
 Whois.com
   - https://www.whois.com/whois/$domain
 Yandex Site safety report
