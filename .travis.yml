@@ -53,7 +53,10 @@ jobs:
       homebrew:
         packages:
           - bash
+        update: true
     before_script:
+      - echo $PATH
+      - export PATH="$(brew --prefix)/bin:$PATH"
       - echo $PATH
       - brew info bash
       - which bash
