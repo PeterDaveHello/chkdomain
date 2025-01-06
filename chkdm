@@ -57,6 +57,13 @@ done
 
 shopt -s extglob
 domain="${1%%+(.)}"
+# RFC 1035, 1123, 2181, 5891 compliant domain validation
+if [[ ${#domain} -gt 253 ]] ||
+    ! [[ "$domain" =~ ^([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$ ]] ||
+    [[ "$domain" =~ [a-zA-Z0-9-]{64,} ]] ||
+    [[ "$domain" =~ -- ]]; then
+    error "Invalid domain name format! Please use format like 'example.com' or 'sub.example.com'"
+fi
 shopt -u extglob
 
 declare -A nofilterDNS secureDNS adblockDNS
