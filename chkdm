@@ -106,10 +106,8 @@ function query() {
 
     if echo "$result" | grep -Eq "(^| )$PaloAltoSinkholeCname($| )"; then
         return 2
-    elif [ "" != "$NextDNSBlockPageIP" ]; then
-        if echo "$result" | grep -Eq "(^| )$NextDNSBlockPageCname($| )" || [ "$NextDNSBlockPageIP" = "$result" ]; then
+    elif [ "" != "$NextDNSBlockPageIP" ] && { echo "$result" | grep -Eq "(^| )$NextDNSBlockPageCname($| )" || [ "$NextDNSBlockPageIP" = "$result" ]; }; then
             return 3
-        fi
     elif [ ";; connection timed out; no servers could be reached" = "$result" ]; then
         return 4
     elif echo "$result" | grep -E ";; communications error to $dns#[1-9]+: timed out"; then
