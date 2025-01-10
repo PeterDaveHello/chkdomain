@@ -44,6 +44,23 @@ function error() {
     exit 1
 }
 
+if [ -z "$BASH_VERSION" ] || [ -z "$BASH" ]; then
+    error "This script must be run in Bash shell"
+fi
+
+bash_major_version=""
+if [ -n "${BASH_VERSINFO[0]:-}" ] && [ "${BASH_VERSINFO[@]+_}" ]; then
+    bash_major_version="${BASH_VERSINFO[0]}"
+elif [ -n "$BASH_VERSION" ]; then
+    bash_major_version="$(echo "$BASH_VERSION" | cut -d'.' -f1)"
+fi
+
+if [ -z "$bash_major_version" ]; then
+    error "Unable to determine Bash version"
+elif [ "$bash_major_version" -lt 4 ]; then
+    error "This script requires Bash 4.0 or later (detected bash major version: $bash_major_version)"
+fi
+
 if [ "$#" -ne "1" ]; then
     echo.Red "You need to give me just one domain name to run the check!"
     exit 1
