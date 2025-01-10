@@ -93,7 +93,6 @@ secureDNS[Quad9]="9.9.9.9"
 secureDNS[Yandex]="77.88.8.2"
 
 adblockDNS[AdGuard]="94.140.14.14"
-adblockDNS[AhaDNS]="5.2.75.75"
 adblockDNS[CONTROL D]="76.76.2.2"
 adblockDNS[dnsforge.de]="176.9.93.198"
 adblockDNS[OVPN]="192.165.9.157"
