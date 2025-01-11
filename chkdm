@@ -186,6 +186,10 @@ function chkDomain() {
     fi
 }
 
+function warnUpDNS() {
+    echo "${nofilterDNS[*]} ${secureDNS[*]} ${adblockDNS[*]}" | sed 's/ /\n/g' | xargs -I{} -P5 dig +short "$domain" @{} > /dev/null 2>&1 &
+}
+
 function checkNofilterDNS() {
     echo.Cyan "\nRunning dig/nslookup over ${#nofilterDNS[@]} nofilter DNS:"
     keys=()
@@ -270,6 +274,7 @@ HEREDOC
 
 echo.Cyan "You are checking domain: $domain"
 
+warnUpDNS &
 checkNofilterDNS
 checkSecureDNS
 checkAdblockDNS
