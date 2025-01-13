@@ -9,10 +9,29 @@ BLUE='\033[0;34m'
 YELLOW='\033[0;33m'
 NC='\033[0m'
 
+get_time_ms() {
+    if command -v gdate >/dev/null 2>&1; then
+        gdate +%s%N
+    elif date --version >/dev/null 2>&1 && date +%N >/dev/null 2>&1; then
+        date +%s%N
+    else
+        echo $(($(date +%s) * 1000000000))
+    fi
+}
+
+format_duration() {
+    local duration=$1
+    if (( duration < 1000000 )); then
+        echo "<1"
+    else
+        echo "$((duration / 1000000))"
+    fi
+}
+
 test_single_valid_domain() {
     local domain="$1"
     local start_time end_time duration
-    start_time=$(date +%s%N)
+    start_time=$(get_time_ms)
     local result=0
 
     if ! $CHKDM "$domain" > /dev/null 2>&1; then
@@ -22,9 +41,9 @@ test_single_valid_domain() {
         echo -e "    ${GREEN}✓ OK${NC}"
     fi
 
-    end_time=$(date +%s%N)
-    duration=$(( (end_time - start_time) / 1000000 ))
-    echo -e "    ${BLUE}Time: ${YELLOW}${duration}ms${NC}\n"
+    end_time=$(get_time_ms)
+    duration=$(( end_time - start_time ))
+    echo -e "    ${BLUE}Time: ${YELLOW}$(format_duration $duration)ms${NC}\n"
 
     return $result
 }
@@ -40,7 +59,7 @@ test_valid_domains() {
     )
 
     local start_time end_time duration
-    start_time=$(date +%s%N)
+    start_time=$(get_time_ms)
     local passed=0
     local total=${#valid_domains[@]}
 
@@ -70,7 +89,7 @@ test_valid_domains() {
         fi
     done
 
-    end_time=$(date +%s%N)
+    end_time=$(get_time_ms)
     duration=$(( (end_time - start_time) / 1000000 ))
     echo -e "${BLUE}Total time elapsed: ${YELLOW}${duration}ms${NC}"
     echo -e "${GREEN}✓ Valid domains test completed ($passed/$total)${NC}\n"
@@ -93,7 +112,7 @@ test_invalid_domains() {
     )
 
     local start_time end_time duration
-    start_time=$(date +%s%N)
+    start_time=$(get_time_ms)
     local passed=0
     local total=${#invalid_domains[@]}
 
@@ -103,7 +122,7 @@ test_invalid_domains() {
     for domain in "${invalid_domains[@]}"; do
         echo -e "  Testing domain: ${BLUE}$domain${NC}"
         local test_start_time test_end_time test_duration
-        test_start_time=$(date +%s%N)
+        test_start_time=$(get_time_ms)
 
         if $CHKDM "$domain" > /dev/null 2>&1; then
             echo -e "    ${RED}✗ Error: domain '$domain' was marked as valid${NC}"
@@ -112,12 +131,12 @@ test_invalid_domains() {
             ((passed++))
         fi
 
-        test_end_time=$(date +%s%N)
+        test_end_time=$(get_time_ms)
         test_duration=$(( (test_end_time - test_start_time) / 1000000 ))
         echo -e "    ${BLUE}Time: ${YELLOW}${test_duration}ms${NC}\n"
     done
 
-    end_time=$(date +%s%N)
+    end_time=$(get_time_ms)
     duration=$(( (end_time - start_time) / 1000000 ))
     echo -e "${BLUE}Total time elapsed: ${YELLOW}${duration}ms${NC}"
     echo -e "${GREEN}✓ Invalid domains test completed ($passed/$total)${NC}\n"
@@ -145,7 +164,7 @@ check_chkdm_executable() {
 main() {
     echo -e "${BLUE}Starting domain validation tests...${NC}\n"
     local total_start_time total_end_time total_duration
-    total_start_time=$(date +%s%N)
+    total_start_time=$(get_time_ms)
 
     check_chkdm_executable || exit 1
 
@@ -155,7 +174,7 @@ main() {
     test_valid_domains
     valid_result=$?
 
-    total_end_time=$(date +%s%N)
+    total_end_time=$(get_time_ms)
     total_duration=$(( (total_end_time - total_start_time) / 1000000 ))
 
     echo -e "${BLUE}Test Summary:${NC}"
