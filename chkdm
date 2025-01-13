@@ -55,6 +55,8 @@ for cmd in dig nslookup sed head awk sort dirname readlink; do
     fi
 done
 
+dig_command=(dig +short)
+
 shopt -s extglob
 domain="${1%%+(.)}"
 # RFC 1035, 1123, 2181, 5891 compliant domain validation
@@ -99,14 +101,14 @@ adblockDNS[Tiarap]="188.166.206.224"
 
 PaloAltoSinkholeCname="sinkhole.paloaltonetworks.com."
 NextDNSBlockPageCname="blockpage.nextdns.io."
-NextDNSBlockPageIP="$(dig +short $NextDNSBlockPageCname)"
+NextDNSBlockPageIP="$("${dig_command[@]}" $NextDNSBlockPageCname)"
 
 function query() {
     domain="$1"
     dns="$2"
     filterDetect="$3"
 
-    result="$(dig +short "$domain" @"$dns" | xargs)"
+    result="$("${dig_command[@]}" "$domain" @"$dns" | xargs)"
     echo "$result"
 
     if echo "$result" | grep -Eq "(^| )$PaloAltoSinkholeCname($| )"; then
@@ -186,7 +188,7 @@ function chkDomain() {
 }
 
 function warnUpDNS() {
-    echo "${nofilterDNS[*]} ${secureDNS[*]} ${adblockDNS[*]}" | sed 's/ /\n/g' | xargs -I{} -P5 dig +short "$domain" @{} > /dev/null 2>&1 &
+    echo "${nofilterDNS[*]} ${secureDNS[*]} ${adblockDNS[*]}" | sed 's/ /\n/g' | xargs -I{} -P5 "${dig_command[@]}" "$domain" @{} > /dev/null 2>&1 &
 }
 
 function checkNofilterDNS() {
