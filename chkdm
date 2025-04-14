@@ -152,6 +152,8 @@ function query() {
         "") ;&
         # dnsforge.de or Pi-Hole based blockers
         "127.0.0.1" ) ;&
+        # AdGuard
+        "94.140.14.33" ) ;&
         # Cloudflare & CONTROL D blocked domain
         "0.0.0.0" | "::") ;&
         # SafeDNS blocked domain (blockpage.safedns.com)
