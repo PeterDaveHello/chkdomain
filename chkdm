@@ -110,6 +110,7 @@ secureDNS[Yandex]="77.88.8.2"
 
 adblockDNS[AdGuard]="94.140.14.14"
 adblockDNS[CONTROL D]="76.76.2.2"
+adblockDNS[dnsguard.pub]="62.192.153.242"
 adblockDNS[dnsforge.de]="176.9.93.198"
 adblockDNS[OVPN]="192.165.9.157"
 adblockDNS[Tiarap]="188.166.206.224"
@@ -165,13 +166,16 @@ function query() {
         # OpenDNS (hit-phish.opendns.com)
         "146.112.61.108") ;&
         # Yandex (safe1.yandex.ru)
-        "safe1.yandex.ru." | "213.180.193.250" | "93.158.134.250" | "2a02:6b8::b10c:bad" | "2a02:6b8::b10c:babe")
+        "safe1.yandex.ru." | "213.180.193.250" | "93.158.134.250" | "2a02:6b8::b10c:bad" | "2a02:6b8::b10c:babe") ;&
+        # DNSGuard (blocked domains)
+        "62.192.153.243")
             return 1 ;;
         # Other cases, consider properly resolved
         *)
             return 0 ;;
     esac
 }
+
 
 function detailQuery() {
     domain="$1"
