@@ -11,10 +11,9 @@ The DNS services currently used for sending queries are listed below:
 | ---------------------------------------------- | ------------------------------------------------ | ------------------------------------------- |
 | [AdGuard][AdGuard] (`94.140.14.140`)           | [CleanBrowsing][CleanBrowsing] (`185.228.168.9`) | [AdGuard][AdGuard] (`94.140.14.14`)         |
 | [Cloudflare][Cloudflare] (`1.1.1.1`)           | [Cloudflare][Cloudflare] (`1.1.1.2`)             | [CONTROL D][CONTROL D] (`76.76.2.2`)        |
-| [dns0.eu][dns0.eu] (`193.110.81.254`)          | [Comodo][Comodo] (`8.26.56.26`)                  | [dnsforge.de][dnsforge.de] (`176.9.93.198`) |
-| [Gcore][Gcore] (`95.85.95.85`)                 | [CONTROL D][CONTROL D] (`76.76.2.1`)             | [OVPN][OVPN] (`192.165.9.157`)              |
-| [Google][Google] (`8.8.8.8`)                   | [dns0.eu][dns0.eu] (`193.110.81.0`)              | [Tiarap][Tiarap] (`188.166.206.224`)        |
-| [Hinet][Hinet] (`168.95.1.1`)                  | [UltraDNS][UltraDNS] (`156.154.70.2`)            |                                             |
+| [Gcore][Gcore] (`95.85.95.85`)                 | [Comodo][Comodo] (`8.26.56.26`)                  | [dnsforge.de][dnsforge.de] (`176.9.93.198`) |
+| [Google][Google] (`8.8.8.8`)                   | [CONTROL D][CONTROL D] (`76.76.2.1`)             | [OVPN][OVPN] (`192.165.9.157`)              |
+| [Hinet][Hinet] (`168.95.1.1`)                  | [UltraDNS][UltraDNS] (`156.154.70.2`)            | [Tiarap][Tiarap] (`188.166.206.224`)        |
 | [UltraDNS][UltraDNS] (`64.6.64.6`)             | [OpenDNS][OpenDNS] (`208.67.222.222`)            |                                             |
 | [OpenDNS][OpenDNS] (`208.67.222.2`)            | [Quad101][Quad101] (`101.101.101.101`)           |                                             |
 | [Quad9][Quad9] (`9.9.9.10`)                    | [Quad9][Quad9] (`9.9.9.9`)                       |                                             |
@@ -124,7 +123,6 @@ GPL-3.0 (GNU GENERAL PUBLIC LICENSE Version 3)
 [Cloudflare]: https://1.1.1.1/family/
 [Comodo]: https://www.comodo.com/secure-dns/
 [CONTROL D]: https://controld.com/
-[dns0.eu]: https://www.dns0.eu/
 [dnsforge.de]: https://dnsforge.de/
 [Gcore]: https://gcore.com/public-dns
 [Google]: https://developers.google.com/speed/public-dns/
