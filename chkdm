@@ -276,6 +276,8 @@ OpenDNS
   - https://domain.opendns.com/$domain
 Palo Alto Networks URL Filtering
   - https://urlfiltering.paloaltonetworks.com/single_cr/?url=$domain
+Talos Intelligence
+  - https://www.talosintelligence.com/reputation_center/lookup?search=$domain
 URLVoid
   - https://www.urlvoid.com/scan/$domain/
 urlscan.io

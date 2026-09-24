@@ -30,6 +30,7 @@ After checking the domain, `chkdomain` provides direct links to the following in
 - [Norton Safe Web](https://safeweb.norton.com/)
 - [OpenDNS](https://domain.opendns.com/)
 - [Palo Alto Networks URL Filtering](https://urlfiltering.paloaltonetworks.com/single_cr/)
+- [Talos Intelligence](https://www.talosintelligence.com/reputation_center)
 - [URLVoid](https://www.urlvoid.com/scan/)
 - [urlscan.io](https://urlscan.io/)
 - [VirusTotal](https://www.virustotal.com/gui/home/url)
