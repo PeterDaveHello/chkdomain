@@ -11,7 +11,7 @@ The DNS services currently used for sending queries are listed below:
 | ---------------------------------------------- | ------------------------------------------------ | ------------------------------------------- |
 | [AdGuard][AdGuard] (`94.140.14.140`)           | [CleanBrowsing][CleanBrowsing] (`185.228.168.9`) | [AdGuard][AdGuard] (`94.140.14.14`)         |
 | [Cloudflare][Cloudflare] (`1.1.1.1`)           | [Cloudflare][Cloudflare] (`1.1.1.2`)             | [CONTROL D][CONTROL D] (`76.76.2.2`)        |
-| [Gcore][Gcore] (`95.85.95.85`)                 | [Comodo][Comodo] (`8.26.56.26`)                  | [dnsforge.de][dnsforge.de] (`176.9.93.198`) |
+| [Gcore][Gcore] (`95.85.95.85`)                 | [Comodo][Comodo] (`8.20.247.20`)                 | [dnsforge.de][dnsforge.de] (`176.9.93.198`) |
 | [Google][Google] (`8.8.8.8`)                   | [CONTROL D][CONTROL D] (`76.76.2.1`)             | [OVPN][OVPN] (`192.165.9.157`)              |
 | [Hinet][Hinet] (`168.95.1.1`)                  | [UltraDNS][UltraDNS] (`156.154.70.2`)            | [Tiarap][Tiarap] (`188.166.206.224`)        |
 | [UltraDNS][UltraDNS] (`64.6.64.6`)             | [OpenDNS][OpenDNS] (`208.67.222.222`)            |                                             |
