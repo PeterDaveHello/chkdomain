@@ -29,15 +29,12 @@ After checking the domain, `chkdomain` provides direct links to the following in
 - [McAfee SiteAdvisor](https://siteadvisor.com/)
 - [Norton Safe Web](https://safeweb.norton.com/)
 - [OpenDNS](https://domain.opendns.com/)
-- [Palo Alto Networks URL Filtering](https://urlfiltering.paloaltonetworks.com/single_cr/)
 - [Talos Intelligence](https://www.talosintelligence.com/reputation_center)
 - [URLVoid](https://www.urlvoid.com/scan/)
 - [urlscan.io](https://urlscan.io/)
 - [VirusTotal](https://www.virustotal.com/gui/home/url)
 - [Whois.com](https://www.whois.com/whois/)
 - [Yandex Site safety report](https://yandex.com/safety/)
-
-The Palo Alto Networks URL Filtering link deep-links to the undocumented `single_cr` change request endpoint so the queried domain is prefilled when the `url` query parameter is provided (e.g., `.../single_cr/?url=example.com`). Palo Alto Networks may modify that flow or introduce additional verification without notice; fall back to the manual form listed under Additional Resources if the shortcut stops working.
 
 If you'd like to build up your own secure DNS, check out the [threat-hostlist](https://github.com/PeterDaveHello/threat-hostlist) repository. It contains many different threat-blocking blocklists to help you create a secure DNS service for your home, office, or elsewhere.
 
@@ -106,7 +103,7 @@ Please be aware that domain names with records such as `0.0.0.0` or `127.0.0.1` 
 
 ## Additional Resources
 
-There are also some malicious domains blocking services that don't directly provide DNS services and can't be queried via the HTTP GET method. As a result, we are unable to integrate them or list their corresponding query URLs in the check results. However, since they are provided by leading security companies and offer a web interface that allows you to manually submit a domain to retrieve the related intelligence, they are worth mentioning. The Palo Alto Networks entry also serves as the manual fallback when the deep link cannot prefill the domain. The services are listed below:
+There are also some malicious domains blocking services that don't directly provide DNS services and can't be queried via the HTTP GET method. As a result, we are unable to integrate them or list their corresponding query URLs in the check results. However, since they are provided by leading security companies and offer a web interface that allows you to manually submit a domain to retrieve the related intelligence, they are worth mentioning. The services are listed below:
 
 - FortiGuard Web Filter Lookup
   - <https://www.fortiguard.com/webfilter>
